@@ -8,6 +8,7 @@ package com.mycompany.lab03;
 import java.text.ParseException;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Scanner;
 
 /**
  *
@@ -120,6 +121,9 @@ public static void main(String[] args) throws ParseException{
     long timeElapsed = Duration.between(start, finish).toMillis();
         System.out.println("time " + timeElapsed);
         
+    Scanner scnr = new Scanner(System.in);
+    
+    Task task1 = new Task();
     
 }
 
