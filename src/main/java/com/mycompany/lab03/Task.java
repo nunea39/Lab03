@@ -16,25 +16,25 @@ import java.util.Scanner;
  */
 public class Task {
     
-public int linearSearch (int nmLst[], int n, int x){
+private int linearSearch (int nmLst[], int n, int x){
     
-    int i = 0, location;
+    int i = 0, location = 0;
     
-    while ( i<=n && x != nmLst[i]){
+    while ( i<=n && x!= nmLst[i]){
+        
         i= i + 1;
     }
+        if (i <= n ){       
+             return location = i;
+        }
     
-    if (i <= n ){       
-        location = i;
-    }
-    
-    else {
-        location = 0; 
-    }
+        else {
+            location = 0; 
+        }
     
     return -1;
 }
-public static int binarySearch (int search, int[] array){
+private int binarySearch (int search, int[] array){
     
     int start = 0;
     int end = array.length -1;
@@ -58,7 +58,7 @@ public static int binarySearch (int search, int[] array){
     return -1;
 }
 
-void bubbleSort(int[] a, int size ) {
+private static void bubbleSort(int[] a, int size ) {
     int outer, inner, temp;
     
     for (outer = size-1; outer > 0; outer--) { // counting down
@@ -80,7 +80,7 @@ void bubbleSort(int[] a, int size ) {
     }
 }
 
-void selectionSort(int[] a , int size) {
+private static void selectionSort(int[] a , int size) {
     int outer, inner, min;
 
     for (outer = 0; outer < size
@@ -109,7 +109,63 @@ void selectionSort(int[] a , int size) {
 }
 
 public static void main(String[] args) throws ParseException{
+
+        
+    Scanner scnr = new Scanner(System.in);
+    int [] arr = {15, 17, 9, 2, 5, 19, 1};
+    Task task1 = new Task();
     
+    // Prints the original array list
+    System.out.print ("Original array: \n");
+    for (int i =0; i < arr.length; i++){
+        System.out.print(arr[i] + " ");
+    }
+    System.out.println("\n");
+    
+    
+    // Sorts the original array list using bubble sorting and prints sorted list
+    bubbleSort(arr, 7);
+    System.out.print ("Bubble sort: \n");
+    for (int i =0; i < arr.length; i++ ){
+    System.out.print(arr[i] + " ");
+    }   
+    System.out.println();
+    
+   
+    // Sorts the original array list using selection sorting and prints sorted list
+    selectionSort(arr, 7);   
+    System.out.print ("Selection sort: \n");
+    for (int i =0; i < arr.length; i++ ){
+    System.out.print(arr[i] + " ");
+    }   
+    System.out.println("\n");
+    
+    //Console will ask user for a value to search within the array
+    System.out.println("Search for value ");
+    int x = scnr.nextInt();
+    
+    //Binary Search will look for the entered value
+    int result = task1.binarySearch(x, arr);
+    if (result == -1){ // if value is not found system will say not found 
+        
+       System.out.println("Binary Search not found ..");  
+       
+    }
+    else { // if the value is found system will display the index it was found in
+        System.out.println("Binary Search found in index " + result);
+    }
+    
+    //Linear search will look for the entered value
+    int result2 = task1.linearSearch(arr, 6, x);
+    if (result2 == -1){ // if value is not found system will say not found 
+        
+       System.out.println("Linear Search not found .."); 
+       
+    }
+    else { // if the value is found system will display the index it was found in
+        System.out.println("Linear Search found in index " + result2);
+    }
+        
     Instant start = Instant.now();
     
     long i=0;
@@ -119,12 +175,8 @@ public static void main(String[] args) throws ParseException{
     Instant finish = Instant.now();
     
     long timeElapsed = Duration.between(start, finish).toMillis();
-        System.out.println("time " + timeElapsed);
+        System.out.println("time " + timeElapsed);  
         
-    Scanner scnr = new Scanner(System.in);
-    
-    Task task1 = new Task();
-    
 }
 
 }
